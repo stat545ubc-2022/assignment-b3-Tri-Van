@@ -3,7 +3,7 @@ library(tidyverse)
 library(colourpicker)
 
 
-bcl <- read_csv("C:/Users/Tri Van/Desktop/UBC PhamSci/UBC Y2 FALL 2022/STAT 545A Exploratory Data Analysis/stat545/Shiny App/bcl-data.csv")
+bcl <- read_csv("C:/Users/Tri Van/Desktop/UBC PhamSci/UBC Y2 FALL 2022/STAT 545A Exploratory Data Analysis/assignment-b3-Tri-Van/Tri_BCLiquid_Update/bcl-data.csv")
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
