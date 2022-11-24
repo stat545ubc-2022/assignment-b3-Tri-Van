@@ -15,4 +15,4 @@
 
 **Feature 3:** Allow user to change the color of the graph - (functional widget/UI change) This feature is useful for user to choose the color of the graph that they can see, especially for color blind people.
 
-**Dataset**: https://github.com/daattali/shiny-server/blob/master/bcl/data/bcl-data.csv", Link to the original data set is also available in app.
+**Dataset**: https://github.com/daattali/shiny-server/blob/master/bcl/data/bcl-data.csv, Link to the original data set is also available in app.
