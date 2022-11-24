@@ -1,6 +1,6 @@
 # 1. A link to a running instance of the Shiny app:
 
-- Link:
+- Link:  https://vantm.shinyapps.io/Tri_BCLiquid_Update/
 
 # 2 Choice of Assignment
 
