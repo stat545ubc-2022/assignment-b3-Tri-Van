@@ -1,0 +1,13 @@
+name: Tri_BCLiquid_Update
+title: Tri_BCLiquid_Update
+username:
+account: vantm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7727396
+bundleId: 6552241
+url: https://vantm.shinyapps.io/Tri_BCLiquid_Update/
+when: 1669333444.45879
+lastSyncTime: 1669333444.45879
+asMultiple: FALSE
+asStatic: FALSE

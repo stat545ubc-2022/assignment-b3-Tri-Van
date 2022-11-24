@@ -11,26 +11,27 @@ ui <- fluidPage(
   h5("Welcome to my shiny app!"),
   br(),
   #New code
-  checkboxGroupInput("CountryInput","New Feature:Select Country of Origin for your drinks!",
-                     choices = c("CANADA","UNITED STATES OF AMERICA","FRANCE","IRELAND","ITALY","BRAZIL", "UNITED KINGDOM", "SPAIN", "GERMANY","PORTUGAL","ARGENTINA","ISRAEL","CZECH REPUBLIC","BELGIUM", "MEXICO","AUSTRALIA","SOUTH AFRICA","CHINA", "CHILE","NETHERLANDS"
-                                 ,"JAMAICA","JAPAN","CUBA","GREECE","BULGARIA"
-                                 , "DOMINICAN REPUBLIC","NEW ZEALAND","POLAND","AUSTRIA","TRINIDAD AND TOBAGO"
-                                 ,"BERMUDA","ANTIGUA AND BARBUDA","MOROCCO","GUYANA","SWEDEN"
-                                 ,"DENMARK","LATVIA","GEORGIA","FINLAND","BARBADOS"
-                                 ,"NICARAGUA","INDIA","KOREA - SOUTH","LEBANON", "HUNGARY"
-                                 ,"TAIWAN","TURKEY","SWITZERLAND", "SINGAPORE", "RUSSIA (USSR)"
-                                 ,"ICELAND","VENEZUELA" ,"CROATIA","RUSSIA","PUERTO RICO"
-                                 ,"THAILAND","FRENCH POLYNESIA (TAHITI)","GUATEMALA","PHILIPPINES","MONTENEGRO"
-                                 ,"ST. CROIX","PANAMA","VIETNAM","PERU"  ),
-                     selected = NULL), #New Feature 1: (functional widget) This feature is useful as it allows you to filter drink based on Country of origin.
-  colourInput("col", "New Feature: Choose Color that you can see!", "green"), #New Feature 3: (functional widget/UI change) This feature is useful for user to choose the color of the graph that they can see, especially for color blind people.
+
   #End new code
   sidebarLayout(
     sidebarPanel(
       sliderInput("priceInput", "Price", 0, 100,
                   value = c(25, 40), pre = "$"),
       radioButtons("typeInput", "Type",
-                   choices = c("BEER", "REFRESHMENT","SPIRITS", "WINE"))
+                   choices = c("BEER", "REFRESHMENT","SPIRITS", "WINE")),
+      checkboxGroupInput("CountryInput","New Feature: Select (Multiple) Countr(ies) of Origin for your drinks!",
+                         choices = c("CANADA","UNITED STATES OF AMERICA","FRANCE","IRELAND","ITALY","BRAZIL", "UNITED KINGDOM", "SPAIN", "GERMANY","PORTUGAL","ARGENTINA","ISRAEL","CZECH REPUBLIC","BELGIUM", "MEXICO","AUSTRALIA","SOUTH AFRICA","CHINA", "CHILE","NETHERLANDS"
+                                     ,"JAMAICA","JAPAN","CUBA","GREECE","BULGARIA"
+                                     , "DOMINICAN REPUBLIC","NEW ZEALAND","POLAND","AUSTRIA","TRINIDAD AND TOBAGO"
+                                     ,"BERMUDA","ANTIGUA AND BARBUDA","MOROCCO","GUYANA","SWEDEN"
+                                     ,"DENMARK","LATVIA","GEORGIA","FINLAND","BARBADOS"
+                                     ,"NICARAGUA","INDIA","KOREA - SOUTH","LEBANON", "HUNGARY"
+                                     ,"TAIWAN","TURKEY","SWITZERLAND", "SINGAPORE", "RUSSIA (USSR)"
+                                     ,"ICELAND","VENEZUELA" ,"CROATIA","RUSSIA","PUERTO RICO"
+                                     ,"THAILAND","FRENCH POLYNESIA (TAHITI)","GUATEMALA","PHILIPPINES","MONTENEGRO"
+                                     ,"ST. CROIX","PANAMA","VIETNAM","PERU"  ),
+                         selected = NULL), #New Feature 1: (functional widget) This feature is useful as it allows you to filter drink based on Country of origin.
+      colourInput("col", "New Feature: Choose Color that you can see!", "green"), #New Feature 3: (functional widget/UI change) This feature is useful for user to choose the color of the graph that they can see, especially for color blind people.
     ),
     mainPanel(
       plotOutput("alcohol_hist"),
