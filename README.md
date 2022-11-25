@@ -1,12 +1,14 @@
-# 1. A link to a running instance of the Shiny app:
+# Assignment B4:
+# Assignment B3:
+### 1. A link to a running instance of the Shiny app:
 
 - Link:  https://vantm.shinyapps.io/Tri_BCLiquid_Update/
 
-# 2 Choice of Assignment
+### 2 Choice of Assignment
 
 - Option A - Update BC Liquor app
 
-# 3 Description of your app
+### 3 Description of your app
 - This app is the updated version of the in-class BC shiny app with the following new features:
 
 **Feature 1:** Allow user to select the drinks country of origin - (functional widget) This feature is useful as it allows you to filter drink based on Country of origin.
