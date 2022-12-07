@@ -16,7 +16,7 @@
 
 **Feature 3:** Allow user to choose what kinds of feature (i.e., AC, heating, pet) they would like to filter for  - (functional widget/UI change) This feature is useful for user to choose a particular type of features that they care about and would like to search for that particular filter. The filter options are hidden until it is selected which make the UI feel cleaner.
 
-**Feature 3:** Each dot in the resulting chart represent an apartment that fits selection criteria, organized by ward for quick visualization.
+**Feature 4:** Each dot in the resulting chart represent an apartment that fits selection criteria, organized by ward for quick visualization.
 
 **Dataset**: https://github.com/UBC-MDS/datateachr, Link to the original data set is also available in app.
 
