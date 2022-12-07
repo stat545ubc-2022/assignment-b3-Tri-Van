@@ -1,3 +1,10 @@
+# Git Repository outline:
+
+- This repository contains Tri Van submissions for assignment B3 & B4
+### Assignment_B3: Folder contains file related to assignment B3
+### Tri_Assignment_B4_App: Folder files and code for assignment B4 app
+### Tri_BCLiquid_Update: Folder files and code for assignment B3 app update
+
 # Assignment B4:
 ### 1. A link to a running instance of the Shiny app:
 
