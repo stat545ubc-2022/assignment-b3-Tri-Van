@@ -17,9 +17,9 @@ ui <- fluidPage(
     sidebarLayout(
         sidebarPanel(
           sliderInput("no_of_units_Input", "Number of Units", 0, 1000,
-                      value = c(30, 35), pre = "Units"),
+                      value = c(30, 500), pre = "# of Units "),
           sliderInput("year_built_Input", "year built", 1900, 2200,
-                      value = c(2000, 2010), pre = "Years"),
+                      value = c(1900, 2010), pre = "Year "),
           selectInput("Feature_Input", "Which additional features would you like to filter for?", choices = c("AC","Heating Type","Allow Pet")),
           conditionalPanel(
             condition = "input.Feature_Input == 'AC'",
@@ -48,13 +48,14 @@ ui <- fluidPage(
     # Show a table
           DT::dataTableOutput("data_table")
         )
-    )
+    ),
+    a(href="https://github.com/UBC-MDS/datateachr", strong("Link to the original data set"))
 )
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
   output$companyOutput <- renderUI({
-    selectInput("facilities_available_Input", "facilities_available",
+    selectInput("facilities_available_Input", "Available Facilities",
                 sort(unique(apt_buildings$facilities_available)),
                 selected = "Recycling bins")
   })

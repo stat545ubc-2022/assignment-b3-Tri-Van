@@ -4,10 +4,10 @@ username:
 account: vantm
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
-appId: 7732903
-bundleId: 6555085
+appId: 7835317
+bundleId: 6603109
 url: https://vantm.shinyapps.io/Tri_Assignment_B4_App/
-when: 1669405319.292
-lastSyncTime: 1669405319.292
+when: 1670394361.03119
+lastSyncTime: 1670394361.03119
 asMultiple: FALSE
 asStatic: FALSE
