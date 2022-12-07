@@ -1,51 +1,88 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
+library(tidyverse)
+
+
+apt_buildings<- read_csv("apt_buildings.csv")
+#glimpse(apt_buildings)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
 
     # Application title
-    titlePanel("Old Faithful Geyser Data"),
+    titlePanel("Toronto Apartment Information"),
+    h3(div("This app allows you to search for apartment in Toronto based on selected criteria, and shows the number of apartment found for each ward in a chart.", style = "color: blue;")),
+    img(src = "AllWardKey.png"),
 
-    # Sidebar with a slider input for number of bins 
+    # Sidebar with a slider input for number of bins
     sidebarLayout(
         sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
-        ),
+          sliderInput("no_of_units_Input", "Number of Units", 0, 1000,
+                      value = c(30, 35), pre = "Units"),
+          sliderInput("year_built_Input", "year built", 1900, 2200,
+                      value = c(2000, 2010), pre = "Years"),
+          selectInput("Feature_Input", "Which additional features would you like to filter for?", choices = c("AC","Heating Type","Allow Pet")),
+          conditionalPanel(
+            condition = "input.Feature_Input == 'AC'",
+            selectInput("air_conditioning_Input","Choose type of Air Conditioning",
+                               choices = c("CENTRAL AIR","INDIVIDUAL UNITS","NONE"))
+                           ),
+          conditionalPanel(
+            condition = "input.Feature_Input == 'Heating Type'",
+            selectInput("heating_type_Input","Choose type of heating",
+                        choices = c("HOT WATER","ELECTRIC","FORCED AIR GAS"))
+                          ),
+          conditionalPanel(
+            condition = "input.Feature_Input == 'Allow Pet'",
+            selectInput("pets_allowed_Input","Choose whether pet is allowed",
+                        choices = c("YES","NO"))
+                          ),
+          uiOutput("companyOutput")
+       ),
 
-        # Show a plot of the generated distribution
+    # main outputs
         mainPanel(
-           plotOutput("distPlot")
+    # Show a plot of the generated distribution
+          plotOutput("apt_hist"),
+          br(), br(),
+
+    # Show a table
+          DT::dataTableOutput("data_table")
         )
     )
 )
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
+  output$companyOutput <- renderUI({
+    selectInput("facilities_available_Input", "facilities_available",
+                sort(unique(apt_buildings$facilities_available)),
+                selected = "Recycling bins")
+  })
 
-    output$distPlot <- renderPlot({
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
+  filtered_data <-
+  reactive({
+     apt_buildings %>% filter(no_of_units >= input$no_of_units_Input[1]
+                            & no_of_units <= input$no_of_units_Input[2]
+                            & year_built >= input$year_built_Input[1]
+                            & year_built <= input$year_built_Input[2]
+                            & air_conditioning == input$air_conditioning_Input
+                            & heating_type == input$heating_type_Input
+                            & pets_allowed == input$pets_allowed_Input
+                            & facilities_available == input$facilities_available_Input
+                            )
+  })
 
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white',
-             xlab = 'Waiting time to next eruption (in mins)',
-             main = 'Histogram of waiting times')
+  output$apt_hist <-
+    renderPlot({
+      filtered_data() %>%
+        ggplot(aes(ward)) + geom_dotplot() + xlab("Ward Number")
+    })
+
+  output$data_table <-
+    DT::renderDataTable({
+      filtered_data()
     })
 }
 
-# Run the application 
+# Run the application
 shinyApp(ui = ui, server = server)
